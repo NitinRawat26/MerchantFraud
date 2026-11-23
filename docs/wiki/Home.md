@@ -12,6 +12,7 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - [Scoring](Scoring.md) — explainable 0–1000 fraud risk scoring.
 - [Persistence](Persistence.md) — SQLite storage for fraud records.
 - [API](Api.md) — REST endpoints for ingest, scoring, alerts, and cases.
+- [Synthetic data](Synthetic.md) — deterministic sample merchants and fraud labels.
 - [Roadmap](Roadmap.md) — patch-by-patch build plan.
 
 ## Current implementation
@@ -23,4 +24,5 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - `MerchantFraud.Scoring` combines rule hits and feature signals into capped fraud risk scores.
 - `MerchantFraud.Persistence` stores canonical records and audit events in SQLite.
 - `MerchantFraud.Api` exposes the fraud pipeline over HTTP.
-- `MerchantFraud.Tests` verifies score bounds, bands, reason-code normalization, domain invariants, ingestion behavior, feature extraction, rule evaluation, scoring, persistence, and API endpoints.
+- `MerchantFraud.Synthetic` generates deterministic labeled sample data.
+- `MerchantFraud.Tests` verifies score bounds, bands, reason-code normalization, domain invariants, ingestion behavior, feature extraction, rule evaluation, scoring, persistence, API endpoints, and synthetic data.

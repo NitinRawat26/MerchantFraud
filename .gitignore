@@ -1,0 +1,44 @@
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+project.lock.json
+artifacts/
+TestResults/
+coverage*.xml
+coverage*.json
+*.binlog
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+web/**/dist/
+web/**/.angular/
+
+# Local data and databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+data/
+
+# Secrets and local credentials
+.env
+.env.*
+secrets/
+*-key.json
+*.pfx
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Patch files
+*.patch

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MerchantFraud.Core/MerchantFraud.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MerchantFraud.Tests/MerchantFraud.Tests.csproj" />
+  </Folder>
+</Solution>

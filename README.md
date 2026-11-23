@@ -14,10 +14,11 @@ Hybrid fraud-risk platform for merchant acquiring: explainable rules + ML scorin
 Early scaffold. The solution currently contains:
 
 - `src/MerchantFraud.Core` — canonical fraud domain model and fraud risk score primitive.
+- `src/MerchantFraud.Ingestion` — JSON/CSV transaction feed parsing with row-level errors and PII/PCI masking.
 - `tests/MerchantFraud.Tests` — xUnit tests.
-- `docs/wiki` — architecture, domain model, roadmap, and planning docs.
+- `docs/wiki` — architecture, domain model, ingestion, roadmap, and planning docs.
 
-Planned projects include ingestion, feature extraction, rules, model scoring, case management, persistence, API, and an Angular workbench.
+Planned projects include feature extraction, rules, model scoring, case management, persistence, API, and an Angular workbench.
 
 ## Build and test
 

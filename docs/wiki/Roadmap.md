@@ -11,7 +11,7 @@ The build is intentionally patch-sized. Each patch should compile and pass tests
 5. **Rules engine v1** — deterministic fraud policies with hard stops and review triggers (implemented in patch 05).
 6. **Scoring engine v1** — combine rule hits and features into a 0–1000 score with reason codes (implemented in patch 06).
 7. **Persistence v1** — SQLite store for merchants, transactions, scores, cases, and audit events (implemented in patch 07).
-8. **API v1** — health, ingest, score, alerts, and case endpoints.
+8. **API v1** — health, ingest, score, alerts, and case endpoints (implemented in patch 08).
 9. **Synthetic data generator** — deterministic sample merchants, transactions, disputes, and labels.
 10. **Supervised model foundation** — dataset builder, LightGBM training pipeline, offline evaluation.
 11. **Network analysis v1** — shared identifiers and merchant link/ring scoring.

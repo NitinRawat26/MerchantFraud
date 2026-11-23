@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantFraud.Core\MerchantFraud.Core.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Ingestion\MerchantFraud.Ingestion.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Features\MerchantFraud.Features.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Scoring\MerchantFraud.Scoring.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Persistence\MerchantFraud.Persistence.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/MerchantFraud.Api/MerchantFraud.Api.csproj" />
     <Project Path="src/MerchantFraud.Core/MerchantFraud.Core.csproj" />
     <Project Path="src/MerchantFraud.Features/MerchantFraud.Features.csproj" />
     <Project Path="src/MerchantFraud.Ingestion/MerchantFraud.Ingestion.csproj" />

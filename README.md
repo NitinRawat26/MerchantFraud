@@ -19,10 +19,11 @@ Early scaffold. The solution currently contains:
 - `src/MerchantFraud.Rules` — deterministic fraud rules with review/decline actions and reason codes.
 - `src/MerchantFraud.Scoring` — explainable 0–1000 fraud risk scoring from rule hits and feature signals.
 - `src/MerchantFraud.Persistence` — SQLite store for merchants, transactions, disputes, score results, cases, and audit events.
+- `src/MerchantFraud.Api` — ASP.NET Core minimal API for health, ingest, scoring, alerts, and cases.
 - `tests/MerchantFraud.Tests` — xUnit tests.
-- `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, roadmap, and planning docs.
+- `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, API, roadmap, and planning docs.
 
-Planned projects include ML model scoring, case management, API, and an Angular workbench.
+Planned projects include ML model scoring, case management, synthetic data, network analysis, and an Angular workbench.
 
 ## Build and test
 

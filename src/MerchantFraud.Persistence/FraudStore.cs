@@ -229,10 +229,19 @@ public sealed class FraudStore : IDisposable
             P("@merchant_id", merchantId));
     }
 
-    public IReadOnlyList<FraudScoreResult> GetScoreResults(string subjectId)
+    public IReadOnlyList<FraudScoreResult> GetScoreResults(string? subjectId = null)
     {
+        var sql = "SELECT id, subject_type, subject_id, score_value, reason_codes, scored_at, model_version FROM score_results";
+        var parameters = new List<SqliteParameter>();
+        if (!string.IsNullOrWhiteSpace(subjectId))
+        {
+            sql += " WHERE subject_id = @subject_id";
+            parameters.Add(P("@subject_id", subjectId));
+        }
+
+        sql += " ORDER BY scored_at DESC, id;";
         return Query(
-            "SELECT id, subject_type, subject_id, score_value, reason_codes, scored_at, model_version FROM score_results WHERE subject_id = @subject_id ORDER BY scored_at, id;",
+            sql,
             reader =>
             {
                 var reasonCodes = JsonSerializer.Deserialize<string[]>(GetString(reader, "reason_codes")) ?? Array.Empty<string>();
@@ -245,13 +254,22 @@ public sealed class FraudStore : IDisposable
                     GetDateTimeOffset(reader, "scored_at"),
                     GetNullableString(reader, "model_version"));
             },
-            P("@subject_id", subjectId));
+            parameters.ToArray());
     }
 
-    public IReadOnlyList<FraudCase> GetCases(string merchantId)
+    public IReadOnlyList<FraudCase> GetCases(string? merchantId = null)
     {
+        var sql = "SELECT id, merchant_id, title, priority, status, assigned_to, opened_at, closed_at, external_ref FROM cases";
+        var parameters = new List<SqliteParameter>();
+        if (!string.IsNullOrWhiteSpace(merchantId))
+        {
+            sql += " WHERE merchant_id = @merchant_id";
+            parameters.Add(P("@merchant_id", merchantId));
+        }
+
+        sql += " ORDER BY opened_at DESC, id;";
         return Query(
-            "SELECT id, merchant_id, title, priority, status, assigned_to, opened_at, closed_at, external_ref FROM cases WHERE merchant_id = @merchant_id ORDER BY opened_at, id;",
+            sql,
             reader => new FraudCase(
                 GetString(reader, "id"),
                 GetString(reader, "merchant_id"),
@@ -262,7 +280,7 @@ public sealed class FraudStore : IDisposable
                 GetNullableDateTimeOffset(reader, "opened_at"),
                 GetNullableDateTimeOffset(reader, "closed_at"),
                 GetNullableString(reader, "external_ref")),
-            P("@merchant_id", merchantId));
+            parameters.ToArray());
     }
 
     public IReadOnlyList<FraudAuditEvent> GetAuditEvents(string? entityId = null)

@@ -15,10 +15,11 @@ Early scaffold. The solution currently contains:
 
 - `src/MerchantFraud.Core` — canonical fraud domain model and fraud risk score primitive.
 - `src/MerchantFraud.Ingestion` — JSON/CSV transaction feed parsing with row-level errors and PII/PCI masking.
+- `src/MerchantFraud.Features` — merchant-level feature extraction for activity, amount, refund, dispute, channel, and time-window behavior.
 - `tests/MerchantFraud.Tests` — xUnit tests.
-- `docs/wiki` — architecture, domain model, ingestion, roadmap, and planning docs.
+- `docs/wiki` — architecture, domain model, ingestion, features, roadmap, and planning docs.
 
-Planned projects include feature extraction, rules, model scoring, case management, persistence, API, and an Angular workbench.
+Planned projects include rules, model scoring, case management, persistence, API, and an Angular workbench.
 
 ## Build and test
 

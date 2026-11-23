@@ -9,6 +9,7 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - [Ingestion](Ingestion.md) — JSON/CSV feed parsing and PII/PCI masking.
 - [Features](Features.md) — merchant-level feature extraction.
 - [Rules](Rules.md) — deterministic fraud rules and recommended actions.
+- [Scoring](Scoring.md) — explainable 0–1000 fraud risk scoring.
 - [Roadmap](Roadmap.md) — patch-by-patch build plan.
 
 ## Current implementation
@@ -17,4 +18,5 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - `MerchantFraud.Ingestion` parses JSON/CSV transaction feeds into canonical transactions and masks IP/card data by default.
 - `MerchantFraud.Features` computes merchant feature sets from transactions and disputes.
 - `MerchantFraud.Rules` evaluates feature sets against a deterministic fraud rule catalog.
-- `MerchantFraud.Tests` verifies score bounds, bands, reason-code normalization, domain invariants, ingestion behavior, feature extraction, and rule evaluation.
+- `MerchantFraud.Scoring` combines rule hits and feature signals into capped fraud risk scores.
+- `MerchantFraud.Tests` verifies score bounds, bands, reason-code normalization, domain invariants, ingestion behavior, feature extraction, rule evaluation, and scoring.

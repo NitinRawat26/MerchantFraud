@@ -4,6 +4,7 @@
     <Project Path="src/MerchantFraud.Features/MerchantFraud.Features.csproj" />
     <Project Path="src/MerchantFraud.Ingestion/MerchantFraud.Ingestion.csproj" />
     <Project Path="src/MerchantFraud.Rules/MerchantFraud.Rules.csproj" />
+    <Project Path="src/MerchantFraud.Scoring/MerchantFraud.Scoring.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/MerchantFraud.Tests/MerchantFraud.Tests.csproj" />

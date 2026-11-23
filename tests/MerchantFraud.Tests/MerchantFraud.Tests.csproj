@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\MerchantFraud.Core\MerchantFraud.Core.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Ingestion\MerchantFraud.Ingestion.csproj" />
+    <ProjectReference Include="..\..\src\MerchantFraud.Features\MerchantFraud.Features.csproj" />
   </ItemGroup>
 
 </Project>

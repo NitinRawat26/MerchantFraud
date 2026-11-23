@@ -5,7 +5,7 @@ The build is intentionally patch-sized. Each patch should compile and pass tests
 ## Patch plan
 
 1. **Scaffold** — solution, Core project, tests, `.gitignore`, README, wiki skeleton.
-2. **Canonical domain model** — merchant, owner, application, transaction, dispute, case, score, and reason-code records.
+2. **Canonical domain model** — merchant, owner, application, transaction, dispute, case, score-result, and money records (implemented in patch 02).
 3. **Ingestion v1** — CSV/JSON transaction feed parsing and PII/PCI masking.
 4. **Feature extraction v1** — velocity, amount, refund, dispute, CNP, and time-window merchant features.
 5. **Rules engine v1** — deterministic fraud policies with hard stops and review triggers.

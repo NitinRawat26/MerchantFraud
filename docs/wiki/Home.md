@@ -5,9 +5,10 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 ## Pages
 
 - [Architecture](Architecture.md) — planned system boundaries and design principles.
+- [Domain model](Domain-Model.md) — canonical merchant, transaction, dispute, case, and score records.
 - [Roadmap](Roadmap.md) — patch-by-patch build plan.
 
 ## Current implementation
 
-- `MerchantFraud.Core` contains the first fraud risk score primitive.
-- `MerchantFraud.Tests` verifies score bounds, bands, and reason-code normalization.
+- `MerchantFraud.Core` contains the canonical fraud domain model and the fraud risk score primitive.
+- `MerchantFraud.Tests` verifies score bounds, bands, reason-code normalization, and domain invariants.

@@ -15,6 +15,7 @@ var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
+app.UseRouting();
 
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
 

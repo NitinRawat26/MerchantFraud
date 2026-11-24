@@ -11,7 +11,7 @@ Hybrid fraud-risk platform for merchant acquiring: explainable rules + ML scorin
 
 ## Current status
 
-Early scaffold. The solution currently contains:
+Working foundation. The solution currently contains:
 
 - `src/MerchantFraud.Core` — canonical fraud domain model and fraud risk score primitive.
 - `src/MerchantFraud.Ingestion` — JSON/CSV transaction feed parsing with row-level errors and PII/PCI masking.
@@ -26,7 +26,7 @@ Early scaffold. The solution currently contains:
 - `src/MerchantFraud.Integrations` — external assessment and schema adapters for MerchantIntelligence and MapWright.
 - `web/workbench` — Angular dashboard, alerts queue, merchant detail, and score explanation UI.
 - `tests/MerchantFraud.Tests` — xUnit tests.
-- `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, API, synthetic data, ML, network, integrations, roadmap, and planning docs.
+- `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, API, synthetic data, ML, network, integrations, workbench, model ops, operator guide, roadmap, and planning docs.
 
 Planned projects include case management and production model serving.
 
@@ -37,11 +37,25 @@ dotnet build MerchantFraud.slnx
 dotnet test MerchantFraud.slnx
 ```
 
+## Examples
+
+Ingest the sample transaction feed and score a merchant:
+
+```bash
+dotnet run --project src/MerchantFraud.Api --urls http://localhost:5292
+curl -X POST http://localhost:5292/ingest/transactions -H "Content-Type: application/json" --data-binary @samples/transaction-feed.sample.json
+curl -X POST http://localhost:5292/score/merchant -H "Content-Type: application/json" -d '{"merchantId":"MER-SAMPLE-001"}'
+curl http://localhost:5292/alerts
+```
+
+Run the Angular workbench with `cd web/workbench && npm ci && npm start`.
+
 ## Documentation
 
 - [Wiki home](docs/wiki/Home.md)
 - [Architecture](docs/wiki/Architecture.md)
 - [Roadmap](docs/wiki/Roadmap.md)
+- [Operator guide](docs/wiki/Operator-Guide.md)
 
 ## Principles
 

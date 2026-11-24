@@ -1,0 +1,49 @@
+{
+  "transactions": [
+    {
+      "id": "TX-SAMPLE-001",
+      "merchantId": "MER-SAMPLE-001",
+      "occurredAt": "2026-01-28T10:00:00Z",
+      "amount": 42.50,
+      "currency": "USD",
+      "channel": "CardPresent",
+      "status": "Captured",
+      "cardBin": "411111",
+      "cardLast4": "1111",
+      "customerId": "CUS-1001",
+      "deviceId": "DEV-1001",
+      "ipAddress": "198.51.100.24",
+      "externalRef": "pos-1001"
+    },
+    {
+      "id": "TX-SAMPLE-002",
+      "merchantId": "MER-SAMPLE-001",
+      "occurredAt": "2026-01-28T10:05:00Z",
+      "amount": 500.00,
+      "currency": "USD",
+      "channel": "CardNotPresent",
+      "status": "Captured",
+      "cardBin": "555555",
+      "cardLast4": "4444",
+      "customerId": "CUS-1002",
+      "deviceId": "DEV-1002",
+      "ipAddress": "203.0.113.10",
+      "externalRef": "web-1002"
+    },
+    {
+      "id": "TX-SAMPLE-003",
+      "merchantId": "MER-SAMPLE-002",
+      "occurredAt": "2026-01-28T11:00:00Z",
+      "amount": 19.99,
+      "currency": "USD",
+      "channel": "Ecommerce",
+      "status": "Refunded",
+      "cardBin": "378282",
+      "cardLast4": "0005",
+      "customerId": "CUS-1003",
+      "deviceId": "DEV-1003",
+      "ipAddress": "192.0.2.55",
+      "externalRef": "web-1003"
+    }
+  ]
+}

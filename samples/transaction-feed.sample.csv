@@ -1,0 +1,4 @@
+id,merchantId,occurredAt,amount,currency,channel,status,cardBin,cardLast4,customerId,deviceId,ipAddress,externalRef
+TX-SAMPLE-CSV-001,MER-SAMPLE-001,2026-01-28T12:00:00Z,42.50,USD,CardPresent,Captured,411111,1111,CUS-1001,DEV-1001,198.51.100.24,pos-csv-1001
+TX-SAMPLE-CSV-002,MER-SAMPLE-001,2026-01-28T12:05:00Z,500.00,USD,CardNotPresent,Captured,555555,4444,CUS-1002,DEV-1002,203.0.113.10,web-csv-1002
+TX-SAMPLE-CSV-003,MER-SAMPLE-002,2026-01-28T13:00:00Z,19.99,USD,Ecommerce,Refunded,378282,0005,CUS-1003,DEV-1003,192.0.2.55,web-csv-1003

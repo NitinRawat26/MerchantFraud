@@ -19,7 +19,7 @@ The build is intentionally patch-sized. Each patch should compile and pass tests
 13. **MapWright integration** — map partner-specific transaction/application schemas into canonical records (implemented in patch 13).
 14. **Angular workbench v1** — dashboard, alerts queue, merchant detail, score explanation (implemented in patch 14).
 15. **Model ops v1** — champion/challenger, drift checks, retrain/promote workflow (implemented in patch 15).
-16. **Docs and samples** — full wiki, README examples, demo data, and operator guides.
+16. **Docs and samples** — full wiki, README examples, demo data, and operator guides (implemented in patch 16).
 
 ## Near-term priority
 

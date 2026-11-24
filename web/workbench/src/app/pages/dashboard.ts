@@ -27,10 +27,10 @@ import { ScoreExplanation } from './score-explanation';
             @for (alert of recentAlerts(); track alert.id) {
               <tr>
                 <td><a [routerLink]="['/merchants', alert.subjectId]">{{ alert.subjectId }}</a></td>
-                <td>{{ alert.score.value }}</td>
-                <td><span class="badge" [class]="'badge ' + alert.score.band.toLowerCase()">{{ alert.score.band }}</span></td>
+                <td>{{ alert.value }}</td>
+                <td><span class="badge" [class]="'badge ' + alert.band.toLowerCase()">{{ alert.band }}</span></td>
                 <td>{{ alert.modelVersion }}</td>
-                <td><mf-score-explanation [reasonCodes]="alert.score.reasonCodes" /></td>
+                <td><mf-score-explanation [reasonCodes]="alert.reasonCodes" /></td>
               </tr>
             }
           </tbody>
@@ -45,6 +45,6 @@ export class Dashboard {
   private readonly cases = toSignal(this.api.cases(), { initialValue: [] as FraudCaseRecord[] });
   protected readonly health = toSignal(this.api.health(), { initialValue: null });
   protected readonly recentAlerts = computed(() => this.alerts().slice(0, 5));
-  protected readonly highRiskAlerts = computed(() => this.alerts().filter(alert => alert.score.value >= 700));
+  protected readonly highRiskAlerts = computed(() => this.alerts().filter(alert => alert.value >= 700));
   protected readonly openCases = computed(() => this.cases().filter(fraudCase => fraudCase.status === 'Open').length);
 }

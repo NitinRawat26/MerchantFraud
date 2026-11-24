@@ -9,7 +9,7 @@ dotnet run --project src/MerchantFraud.Api --urls http://localhost:5292
 ## Ingest sample transactions
 
 ```bash
-curl -X POST http://localhost:5292/ingest/transactions \
+curl -X POST http://localhost:5292/api/ingest/transactions \
   -H "Content-Type: application/json" \
   --data-binary @samples/transaction-feed.sample.json
 ```
@@ -19,18 +19,18 @@ CSV feeds use the same endpoint with `Content-Type: text/csv` and the CSV body.
 ## Score and review
 
 ```bash
-curl -X POST http://localhost:5292/score/merchant \
+curl -X POST http://localhost:5292/api/score/merchant \
   -H "Content-Type: application/json" \
   -d '{"merchantId":"MER-SAMPLE-001"}'
 
-curl http://localhost:5292/alerts
-curl "http://localhost:5292/cases?merchantId=MER-SAMPLE-001"
+curl http://localhost:5292/api/alerts
+curl "http://localhost:5292/api/cases?merchantId=MER-SAMPLE-001"
 ```
 
 Create a case for analyst follow-up:
 
 ```bash
-curl -X POST http://localhost:5292/cases \
+curl -X POST http://localhost:5292/api/cases \
   -H "Content-Type: application/json" \
   -d '{"merchantId":"MER-SAMPLE-001","title":"Review high-risk transaction pattern","priority":"High"}'
 ```
@@ -43,7 +43,7 @@ npm ci
 npm start
 ```
 
-Open `http://localhost:4200`. The dev server proxies API calls to `http://localhost:5292`.
+Open `http://localhost:4200`. The dev server proxies `/api` calls to `http://localhost:5292`.
 
 ## Model operations
 

@@ -6,6 +6,7 @@
     <ProjectReference Include="..\MerchantFraud.Features\MerchantFraud.Features.csproj" />
     <ProjectReference Include="..\MerchantFraud.Scoring\MerchantFraud.Scoring.csproj" />
     <ProjectReference Include="..\MerchantFraud.Persistence\MerchantFraud.Persistence.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Presets\MerchantFraud.Presets.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

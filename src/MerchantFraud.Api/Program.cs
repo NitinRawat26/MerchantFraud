@@ -6,6 +6,7 @@ using MerchantFraud.Core.Scoring;
 using MerchantFraud.Features;
 using MerchantFraud.Ingestion;
 using MerchantFraud.Persistence;
+using MerchantFraud.Presets;
 using MerchantFraud.Scoring;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -137,6 +138,19 @@ app.MapPost("/api/cases", (CreateCaseRequest request, FraudStore store) =>
         closedAt = fraudCase.ClosedAt,
         externalRef = fraudCase.ExternalRef
     });
+});
+
+app.MapGet("/api/presets", () => Results.Ok(FraudPresetCatalog.All));
+
+app.MapPost("/api/presets/{id}/run", (string id, bool? persist, FraudStore store) =>
+{
+    var preset = FraudPresetCatalog.Find(id);
+    if (preset is null)
+    {
+        return Results.NotFound(new { error = $"Preset '{id}' was not found." });
+    }
+
+    return Results.Ok(FraudPresetRunner.Run(preset, persist == false ? null : store));
 });
 
 if (app.Environment.WebRootFileProvider.GetFileInfo("index.html").Exists)

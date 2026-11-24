@@ -15,7 +15,7 @@ The build is intentionally patch-sized. Each patch should compile and pass tests
 9. **Synthetic data generator** — deterministic sample merchants, transactions, disputes, and labels (implemented in patch 09).
 10. **Supervised model foundation** — dataset builder, train/test split, offline evaluation, and baseline model (implemented in patch 10).
 11. **Network analysis v1** — shared identifiers and merchant link/ring scoring (implemented in patch 11).
-12. **MerchantIntelligence integration** — consume assessment/KYB output as fraud features.
+12. **MerchantIntelligence integration** — consume assessment/KYB output as fraud features (implemented in patch 12).
 13. **MapWright integration** — map partner-specific transaction/application schemas into canonical records.
 14. **Angular workbench v1** — dashboard, alerts queue, merchant detail, score explanation.
 15. **Model ops v1** — champion/challenger, drift checks, retrain/promote workflow.

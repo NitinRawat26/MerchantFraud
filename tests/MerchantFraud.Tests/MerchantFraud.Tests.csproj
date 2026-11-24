@@ -30,6 +30,7 @@
     <ProjectReference Include="..\..\src\MerchantFraud.Synthetic\MerchantFraud.Synthetic.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Ml\MerchantFraud.Ml.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Network\MerchantFraud.Network.csproj" />
+    <ProjectReference Include="..\..\src\MerchantFraud.Integrations\MerchantFraud.Integrations.csproj" />
   </ItemGroup>
 
 </Project>

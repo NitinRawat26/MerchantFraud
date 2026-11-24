@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f6f7fb;
+  color: #172033;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 24px;
+  background: #101828;
+  color: #fff;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  color: #d0d5dd;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a.active,
+nav a:hover {
+  color: #fff;
+}
+
+main {
+  padding: 24px;
+}
+
+.page h1 {
+  margin-top: 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card span {
+  color: #667085;
+  font-size: 13px;
+}
+
+.card strong {
+  font-size: 24px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eaecf0;
+  vertical-align: top;
+}
+
+th {
+  background: #f9fafb;
+  color: #475467;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+a {
+  color: #175cd3;
+  text-decoration: none;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #eaecf0;
+  color: #344054;
+}
+
+.badge.low { background: #ecfdf3; color: #027a48; }
+.badge.medium { background: #fffaeb; color: #b54708; }
+.badge.high { background: #fef3f2; color: #b42318; }
+.badge.critical { background: #101828; color: #fff; }
+
+.reason-codes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 520px;
+}
+
+.chip {
+  display: inline-block;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #3538cd;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.muted {
+  color: #667085;
+}

@@ -1,0 +1,7 @@
+{
+  "/health": { "target": "http://localhost:5292", "secure": false },
+  "/alerts": { "target": "http://localhost:5292", "secure": false },
+  "/cases": { "target": "http://localhost:5292", "secure": false },
+  "/score": { "target": "http://localhost:5292", "secure": false },
+  "/ingest": { "target": "http://localhost:5292", "secure": false }
+}

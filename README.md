@@ -9,6 +9,43 @@ Hybrid fraud-risk platform for merchant acquiring: explainable rules + ML scorin
 - Keep deterministic rules first; ML models are optional scoring inputs, not black-box decision makers.
 - Never store raw PAN or CVV. Mask PII and sensitive financial data by default.
 
+## High-level workflow
+
+1. **Ingest** partner transaction/application feeds through `MerchantFraud.Ingestion` or MapWright-mapped payloads. Ingestion validates rows, returns row-level errors, and masks IP/card data by default.
+2. **Canonicalize** records into the shared fraud domain model: merchants, owners, applications, transactions, disputes, cases, scores, and audit events.
+3. **Enrich** merchant activity with point-in-time features, deterministic rules, network links, ML signals, and MerchantIntelligence assessment signals.
+4. **Score** merchants into capped 0–1000 `FraudRiskScore` results with reason codes and score signals.
+5. **Persist and operate** through SQLite, the minimal API, alerts, cases, and the Angular workbench.
+6. **Learn** from analyst decisions and dispute outcomes, then retrain, check drift, and promote champion/challenger models.
+
+## Ecosystem flow
+
+```mermaid
+flowchart LR
+  subgraph Inputs[Partner systems]
+    TX[Transaction / dispute feeds]
+    APP[Merchant applications]
+  end
+
+  MW[MapWright<br/>schema mapping]
+  MI[MerchantIntelligence<br/>pre-boarding KYB/credit assessment]
+  MF[MerchantFraud<br/>fraud-risk platform]
+  WB[Angular workbench<br/>alerts, cases, explanations]
+  OPS[Model ops<br/>retrain, drift, promote]
+
+  TX --> MW
+  APP --> MW
+  MW -->|canonical transactions / applications| MF
+  APP --> MI
+  MI -->|decision, risk score, reason codes| MF
+  MF -->|0–1000 score, reason codes, alerts, cases| WB
+  WB -->|analyst decisions / outcomes| MF
+  MF -->|labels and features| OPS
+  OPS -->|champion model| MF
+```
+
+MapWright is the schema-translation layer: it maps partner-specific transaction/application fields into canonical MerchantFraud ingestion records. MerchantIntelligence is the upstream onboarding/KYB assessment: MerchantFraud consumes its decision, risk score, and reason codes as additional fraud signals instead of duplicating pre-boarding checks. MerchantFraud owns post-boarding fraud risk: transaction abuse, chargebacks, refunds, deterioration, network rings, alerts, cases, and model governance.
+
 ## Current status
 
 Working foundation. The solution currently contains:

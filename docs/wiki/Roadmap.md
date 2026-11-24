@@ -13,7 +13,7 @@ The build is intentionally patch-sized. Each patch should compile and pass tests
 7. **Persistence v1** — SQLite store for merchants, transactions, scores, cases, and audit events (implemented in patch 07).
 8. **API v1** — health, ingest, score, alerts, and case endpoints (implemented in patch 08).
 9. **Synthetic data generator** — deterministic sample merchants, transactions, disputes, and labels (implemented in patch 09).
-10. **Supervised model foundation** — dataset builder, LightGBM training pipeline, offline evaluation.
+10. **Supervised model foundation** — dataset builder, train/test split, offline evaluation, and baseline model (implemented in patch 10).
 11. **Network analysis v1** — shared identifiers and merchant link/ring scoring.
 12. **MerchantIntelligence integration** — consume assessment/KYB output as fraud features.
 13. **MapWright integration** — map partner-specific transaction/application schemas into canonical records.

@@ -20,4 +20,12 @@
 
 `MerchantScoringEngine.Score` accepts optional `additionalSignals`, so MerchantIntelligence/KYB signals can be combined with rule hits and transaction features while preserving reason codes and the 0–1000 cap.
 
-MapWright schema mapping is covered separately.
+## MapWright
+
+`MapWrightTransactionProfile` defines a partner-specific transaction schema:
+
+- `Name` — partner/profile name.
+- `FieldMappings` — canonical feed field to partner field, e.g. `merchantId -> merchant_id`.
+- `Constants` — canonical feed fields with fixed values, e.g. `currency -> USD`.
+
+`MapWrightTransactionMapper.Map` converts one partner record into canonical ingestion-feed fields. Serialize the result as a JSON `transactions` array and pass it to `TransactionFeedParser.ParseJson` to get canonical `FraudTransaction` records with normal masking and row-level errors.

@@ -23,11 +23,11 @@ Early scaffold. The solution currently contains:
 - `src/MerchantFraud.Synthetic` — deterministic synthetic merchants, transactions, disputes, and fraud labels.
 - `src/MerchantFraud.Ml` — supervised dataset builder, feature mapper, train/test split, metrics, and logistic-regression baseline.
 - `src/MerchantFraud.Network` — shared-identifier merchant link detection and network risk scoring.
-- `src/MerchantFraud.Integrations` — external assessment adapters, starting with MerchantIntelligence KYB/risk signals.
+- `src/MerchantFraud.Integrations` — external assessment and schema adapters for MerchantIntelligence and MapWright.
 - `tests/MerchantFraud.Tests` — xUnit tests.
 - `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, API, synthetic data, ML, network, integrations, roadmap, and planning docs.
 
-Planned projects include richer ML trainers, case management, MapWright integration, and an Angular workbench.
+Planned projects include richer ML trainers, case management, and an Angular workbench.
 
 ## Build and test
 

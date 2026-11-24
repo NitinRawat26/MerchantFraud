@@ -1,5 +1,11 @@
 <header class="topbar">
-  <div class="brand">MerchantFraud Workbench</div>
+  <a class="brand" routerLink="/" aria-label="FraudShield home">
+    <mf-brand-logo [size]="34" />
+    <span class="brand-text">
+      <span class="brand-name">Fraud<span class="brand-accent">Shield</span></span>
+      <span class="brand-tagline">Merchant Fraud Workbench</span>
+    </span>
+  </a>
   <nav>
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
     <a routerLink="/alerts" routerLinkActive="active">Alerts</a>

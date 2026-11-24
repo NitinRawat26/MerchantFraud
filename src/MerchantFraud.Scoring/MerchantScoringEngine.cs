@@ -11,7 +11,8 @@ public static class MerchantScoringEngine
         MerchantFeatureSet features,
         FraudRuleEvaluation? ruleEvaluation = null,
         string? modelVersion = null,
-        DateTimeOffset? scoredAt = null)
+        DateTimeOffset? scoredAt = null,
+        IEnumerable<ScoreSignal>? additionalSignals = null)
     {
         ArgumentNullException.ThrowIfNull(features);
 
@@ -28,6 +29,17 @@ public static class MerchantScoringEngine
         }
 
         AddFeatureSignals(features, signals);
+
+        if (additionalSignals is not null)
+        {
+            foreach (var signal in additionalSignals)
+            {
+                if (signal is not null && signal.Points > 0)
+                {
+                    signals.Add(signal);
+                }
+            }
+        }
 
         var rawScore = signals.Sum(signal => signal.Points);
         var cappedScore = Math.Min(1000, rawScore);

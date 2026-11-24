@@ -4,6 +4,7 @@
     <Project Path="src/MerchantFraud.Core/MerchantFraud.Core.csproj" />
     <Project Path="src/MerchantFraud.Features/MerchantFraud.Features.csproj" />
     <Project Path="src/MerchantFraud.Ingestion/MerchantFraud.Ingestion.csproj" />
+    <Project Path="src/MerchantFraud.Integrations/MerchantFraud.Integrations.csproj" />
     <Project Path="src/MerchantFraud.Ml/MerchantFraud.Ml.csproj" />
     <Project Path="src/MerchantFraud.Network/MerchantFraud.Network.csproj" />
     <Project Path="src/MerchantFraud.Persistence/MerchantFraud.Persistence.csproj" />

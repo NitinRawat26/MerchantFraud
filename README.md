@@ -61,7 +61,8 @@ Working foundation. The solution currently contains:
 - `src/MerchantFraud.Ml` — supervised dataset builder, feature mapper, train/test split, metrics, logistic-regression baseline, model registry, and drift checks.
 - `src/MerchantFraud.Network` — shared-identifier merchant link detection and network risk scoring.
 - `src/MerchantFraud.Integrations` — external assessment and schema adapters for MerchantIntelligence and MapWright.
-- `web/workbench` — Angular dashboard, alerts queue, merchant detail, and score explanation UI.
+- `src/MerchantFraud.Presets` — standalone FraudShield presets that run scripted fraud scenarios through every component and report each stage's output.
+- `web/workbench` — FraudShield-branded Angular dashboard, alerts queue, merchant detail, score explanation, and Preset Lab UI.
 - `tests/MerchantFraud.Tests` — xUnit tests.
 - `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, API, synthetic data, ML, network, integrations, workbench, model ops, operator guide, roadmap, and planning docs.
 
@@ -85,7 +86,14 @@ curl -X POST http://localhost:5292/api/score/merchant -H "Content-Type: applicat
 curl http://localhost:5292/api/alerts
 ```
 
-Run the Angular workbench with `cd web/workbench && npm ci && npm start`.
+Run a standalone preset that exercises every component (no feed or external service needed):
+
+```bash
+curl http://localhost:5292/api/presets
+curl -X POST http://localhost:5292/api/presets/full-platform/run
+```
+
+Run the Angular workbench with `cd web/workbench && npm ci && npm start`, then open **Preset Lab** to run presets from the UI.
 
 ## Deploy to Render
 

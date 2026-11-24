@@ -97,6 +97,53 @@ public class MerchantFraudApiTests
         Assert.Equal(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
     }
 
+    [Fact]
+    public async Task Presets_ListAndRun_PopulateAlertsAndCases()
+    {
+        using var factory = new MerchantFraudApiFactory();
+        using var client = factory.CreateClient();
+
+        var presets = await client.GetFromJsonAsync<JsonElement>("/api/presets");
+        Assert.Contains(presets.EnumerateArray(), preset => preset.GetProperty("id").GetString() == "full-platform");
+
+        var runResponse = await client.PostAsync("/api/presets/full-platform/run", null);
+        runResponse.EnsureSuccessStatusCode();
+        var run = await runResponse.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.Equal(10, run.GetProperty("stages").GetArrayLength());
+        Assert.True(run.GetProperty("persisted").GetBoolean());
+
+        var alerts = await client.GetFromJsonAsync<JsonElement>("/api/alerts");
+        Assert.True(alerts.GetArrayLength() > 0);
+        var cases = await client.GetFromJsonAsync<JsonElement>("/api/cases");
+        Assert.True(cases.GetArrayLength() > 0);
+    }
+
+    [Fact]
+    public async Task Presets_DryRun_DoesNotPersist()
+    {
+        using var factory = new MerchantFraudApiFactory();
+        using var client = factory.CreateClient();
+
+        var runResponse = await client.PostAsync("/api/presets/card-testing/run?persist=false", null);
+        runResponse.EnsureSuccessStatusCode();
+        var run = await runResponse.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.False(run.GetProperty("persisted").GetBoolean());
+
+        var alerts = await client.GetFromJsonAsync<JsonElement>("/api/alerts");
+        Assert.Equal(0, alerts.GetArrayLength());
+    }
+
+    [Fact]
+    public async Task Presets_UnknownId_ReturnsNotFound()
+    {
+        using var factory = new MerchantFraudApiFactory();
+        using var client = factory.CreateClient();
+
+        var response = await client.PostAsync("/api/presets/does-not-exist/run", null);
+
+        Assert.Equal(System.Net.HttpStatusCode.NotFound, response.StatusCode);
+    }
+
     private sealed class MerchantFraudApiFactory : WebApplicationFactory<Program>
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)

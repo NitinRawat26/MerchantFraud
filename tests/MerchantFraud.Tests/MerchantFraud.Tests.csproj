@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\src\MerchantFraud.Ml\MerchantFraud.Ml.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Network\MerchantFraud.Network.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Integrations\MerchantFraud.Integrations.csproj" />
+    <ProjectReference Include="..\..\src\MerchantFraud.Presets\MerchantFraud.Presets.csproj" />
   </ItemGroup>
 
 </Project>

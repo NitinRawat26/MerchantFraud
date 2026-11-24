@@ -16,7 +16,8 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - [ML foundation](Ml.md) — dataset builder, split, metrics, and baseline model.
 - [Network analysis](Network.md) — shared identifiers and merchant ring scoring.
 - [Integrations](Integrations.md) — external assessment and mapping adapters.
-- [Workbench](Workbench.md) — Angular fraud-operations UI.
+- [Workbench](Workbench.md) — FraudShield Angular fraud-operations UI and Preset Lab.
+- [Presets](Presets.md) — standalone scenarios that run every component end to end.
 - [Model ops](ModelOps.md) — retraining, champion/challenger, and drift checks.
 - [Operator guide](Operator-Guide.md) — local run, sample ingest, scoring, cases, and workbench.
 - [Roadmap](Roadmap.md) — patch-by-patch build plan.

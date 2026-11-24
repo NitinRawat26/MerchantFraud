@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantFraud.Core\MerchantFraud.Core.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Ingestion\MerchantFraud.Ingestion.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Features\MerchantFraud.Features.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Rules\MerchantFraud.Rules.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Scoring\MerchantFraud.Scoring.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Persistence\MerchantFraud.Persistence.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Synthetic\MerchantFraud.Synthetic.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Ml\MerchantFraud.Ml.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Network\MerchantFraud.Network.csproj" />
+    <ProjectReference Include="..\MerchantFraud.Integrations\MerchantFraud.Integrations.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

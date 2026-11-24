@@ -10,6 +10,8 @@
 - `GET /api/alerts` — returns up to 100 high/critical score results ordered by score.
 - `GET /api/cases?merchantId=` — lists cases, optionally filtered by merchant.
 - `POST /api/cases` — creates a case and writes an audit event.
+- `GET /api/presets` — lists standalone presets (`full-platform`, `card-testing`, `chargeback-abuse`, `merchant-ring`, `clean-merchant`).
+- `POST /api/presets/{id}/run?persist=true|false` — runs a preset through every component and returns per-stage status, summary, metrics and tables plus a per-merchant outcome. `persist` defaults to `true`, which saves merchants, transactions, disputes, scores, cases (`CASE-PRESET-*`) and audit events so results appear in Alerts and Cases; `persist=false` is a dry run. Re-running is idempotent. Unknown ids return 404.
 
 ## Configuration
 

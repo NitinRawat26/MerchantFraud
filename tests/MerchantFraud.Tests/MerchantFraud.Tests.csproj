@@ -29,6 +29,7 @@
     <ProjectReference Include="..\..\src\MerchantFraud.Api\MerchantFraud.Api.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Synthetic\MerchantFraud.Synthetic.csproj" />
     <ProjectReference Include="..\..\src\MerchantFraud.Ml\MerchantFraud.Ml.csproj" />
+    <ProjectReference Include="..\..\src\MerchantFraud.Network\MerchantFraud.Network.csproj" />
   </ItemGroup>
 
 </Project>

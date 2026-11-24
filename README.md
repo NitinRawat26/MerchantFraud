@@ -80,12 +80,16 @@ Ingest the sample transaction feed and score a merchant:
 
 ```bash
 dotnet run --project src/MerchantFraud.Api --urls http://localhost:5292
-curl -X POST http://localhost:5292/ingest/transactions -H "Content-Type: application/json" --data-binary @samples/transaction-feed.sample.json
-curl -X POST http://localhost:5292/score/merchant -H "Content-Type: application/json" -d '{"merchantId":"MER-SAMPLE-001"}'
-curl http://localhost:5292/alerts
+curl -X POST http://localhost:5292/api/ingest/transactions -H "Content-Type: application/json" --data-binary @samples/transaction-feed.sample.json
+curl -X POST http://localhost:5292/api/score/merchant -H "Content-Type: application/json" -d '{"merchantId":"MER-SAMPLE-001"}'
+curl http://localhost:5292/api/alerts
 ```
 
 Run the Angular workbench with `cd web/workbench && npm ci && npm start`.
+
+## Deploy to Render
+
+`Dockerfile` and `render.yaml` deploy the API and workbench as one Render web service. API routes are under `/api`; the workbench is served from the same service at `/`. The free plan uses ephemeral SQLite at `/var/data`; use a paid plan with a disk for persistent data.
 
 ## Documentation
 

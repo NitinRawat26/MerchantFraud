@@ -6,7 +6,7 @@ import type { FraudCaseRecord, FraudScoreResult, HealthStatus } from './models';
 @Injectable({ providedIn: 'root' })
 export class FraudApiService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = '/';
+  private readonly baseUrl = '/api/';
 
   health(): Observable<HealthStatus> {
     return this.http.get<HealthStatus>(`${this.baseUrl}health`);

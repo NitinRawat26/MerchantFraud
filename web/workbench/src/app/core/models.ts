@@ -1,16 +1,12 @@
-export interface FraudRiskScoreView {
-  value: number;
-  band: string;
-  reasonCodes: string[];
-}
-
 export interface FraudScoreResult {
   id: string;
   subjectType: string;
   subjectId: string;
-  score: FraudRiskScoreView;
+  value: number;
+  band: string;
+  reasonCodes: string[];
   scoredAt: string;
-  modelVersion: string;
+  modelVersion?: string | null;
 }
 
 export interface FraudCaseRecord {

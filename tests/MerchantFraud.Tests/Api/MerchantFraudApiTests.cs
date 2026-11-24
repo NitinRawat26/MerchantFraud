@@ -14,7 +14,7 @@ public class MerchantFraudApiTests
         using var factory = new MerchantFraudApiFactory();
         using var client = factory.CreateClient();
 
-        var response = await client.GetAsync("/health");
+        var response = await client.GetAsync("/api/health");
 
         response.EnsureSuccessStatusCode();
         var json = await response.Content.ReadFromJsonAsync<JsonElement>();
@@ -27,7 +27,7 @@ public class MerchantFraudApiTests
         using var factory = new MerchantFraudApiFactory();
         using var client = factory.CreateClient();
 
-        var ingestResponse = await client.PostAsJsonAsync("/ingest/transactions", new
+        var ingestResponse = await client.PostAsJsonAsync("/api/ingest/transactions", new
         {
             transactions = new[]
             {
@@ -49,7 +49,7 @@ public class MerchantFraudApiTests
         Assert.Equal(1, ingestJson.GetProperty("stored").GetInt32());
         Assert.Equal(0, ingestJson.GetProperty("errors").GetArrayLength());
 
-        var scoreResponse = await client.PostAsJsonAsync("/score/merchant", new
+        var scoreResponse = await client.PostAsJsonAsync("/api/score/merchant", new
         {
             merchantId = "MER-1",
             asOf = "2026-01-02T00:00:00Z"
@@ -63,10 +63,10 @@ public class MerchantFraudApiTests
         Assert.Equal("Low", scoreJson.GetProperty("band").GetString());
         Assert.Equal("None", scoreJson.GetProperty("recommendedAction").GetString());
 
-        var alerts = await client.GetFromJsonAsync<JsonElement>("/alerts");
+        var alerts = await client.GetFromJsonAsync<JsonElement>("/api/alerts");
         Assert.Equal(0, alerts.GetArrayLength());
 
-        var createCaseResponse = await client.PostAsJsonAsync("/cases", new
+        var createCaseResponse = await client.PostAsJsonAsync("/api/cases", new
         {
             merchantId = "MER-1",
             title = "Review merchant",
@@ -81,7 +81,7 @@ public class MerchantFraudApiTests
         Assert.Equal("High", caseJson.GetProperty("priority").GetString());
         Assert.Equal("Open", caseJson.GetProperty("status").GetString());
 
-        var cases = await client.GetFromJsonAsync<JsonElement>("/cases?merchantId=MER-1");
+        var cases = await client.GetFromJsonAsync<JsonElement>("/api/cases?merchantId=MER-1");
         Assert.Equal(1, cases.GetArrayLength());
         Assert.Equal("Review merchant", cases[0].GetProperty("title").GetString());
     }
@@ -92,7 +92,7 @@ public class MerchantFraudApiTests
         using var factory = new MerchantFraudApiFactory();
         using var client = factory.CreateClient();
 
-        var response = await client.PostAsync("/ingest/transactions", new StringContent("not-json", System.Text.Encoding.UTF8, "application/json"));
+        var response = await client.PostAsync("/api/ingest/transactions", new StringContent("not-json", System.Text.Encoding.UTF8, "application/json"));
 
         Assert.Equal(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
     }

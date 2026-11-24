@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: merchant-fraud
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: PORT
+        value: "8080"
+      - key: ConnectionStrings__FraudDb
+        value: Data Source=/var/data/merchantfraud.db

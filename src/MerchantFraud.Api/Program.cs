@@ -13,9 +13,12 @@ builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.C
 builder.Services.AddSingleton<FraudStore>(_ => new FraudStore(builder.Configuration.GetConnectionString("FraudDb") ?? "Data Source=merchantfraud.db"));
 var app = builder.Build();
 
-app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
-app.MapPost("/ingest/transactions", async (HttpRequest request, FraudStore store) =>
+app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
+
+app.MapPost("/api/ingest/transactions", async (HttpRequest request, FraudStore store) =>
 {
     try
     {
@@ -36,7 +39,7 @@ app.MapPost("/ingest/transactions", async (HttpRequest request, FraudStore store
     }
 });
 
-app.MapPost("/score/merchant", (ScoreMerchantRequest request, FraudStore store) =>
+app.MapPost("/api/score/merchant", (ScoreMerchantRequest request, FraudStore store) =>
 {
     try
     {
@@ -66,7 +69,7 @@ app.MapPost("/score/merchant", (ScoreMerchantRequest request, FraudStore store) 
     }
 });
 
-app.MapGet("/alerts", (FraudStore store) =>
+app.MapGet("/api/alerts", (FraudStore store) =>
 {
     var alerts = store.GetScoreResults()
         .Where(score => score.Score.Value >= FraudRiskBands.HighThreshold)
@@ -80,6 +83,7 @@ app.MapGet("/alerts", (FraudStore store) =>
             subjectId = score.SubjectId,
             value = score.Score.Value,
             band = score.Score.Band.ToString(),
+            modelVersion = score.ModelVersion,
             scoredAt = score.ScoredAt,
             reasonCodes = score.Score.ReasonCodes
         })
@@ -88,7 +92,7 @@ app.MapGet("/alerts", (FraudStore store) =>
     return Results.Ok(alerts);
 });
 
-app.MapGet("/cases", (string? merchantId, FraudStore store) =>
+app.MapGet("/api/cases", (string? merchantId, FraudStore store) =>
 {
     var cases = string.IsNullOrWhiteSpace(merchantId) ? store.GetCases() : store.GetCases(merchantId);
     return Results.Ok(cases.Select(fraudCase => new
@@ -105,7 +109,7 @@ app.MapGet("/cases", (string? merchantId, FraudStore store) =>
     }));
 });
 
-app.MapPost("/cases", (CreateCaseRequest request, FraudStore store) =>
+app.MapPost("/api/cases", (CreateCaseRequest request, FraudStore store) =>
 {
     var fraudCase = new FraudCase(
         $"CASE-{Guid.NewGuid():N}",
@@ -133,6 +137,11 @@ app.MapPost("/cases", (CreateCaseRequest request, FraudStore store) =>
         externalRef = fraudCase.ExternalRef
     });
 });
+
+if (app.Environment.WebRootFileProvider.GetFileInfo("index.html").Exists)
+{
+    app.MapFallbackToFile("{*path:regex(^(?!api/).*$)}", "index.html");
+}
 
 app.Run();
 

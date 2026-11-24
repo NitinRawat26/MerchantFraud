@@ -18,7 +18,7 @@ npm install
 npm start
 ```
 
-The dev server proxies `/health`, `/alerts`, `/cases`, `/score`, and `/ingest` to the API.
+The dev server proxies `/api` calls to the API on `http://localhost:5292`.
 
 ## Pages
 

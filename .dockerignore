@@ -1,0 +1,12 @@
+.git
+**/bin
+**/obj
+**/node_modules
+web/**/dist
+web/**/.angular
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.patch

@@ -35,10 +35,10 @@ interface MerchantDetailData {
             @for (alert of data().alerts; track alert.id) {
               <tr>
                 <td>{{ alert.scoredAt | date:'medium' }}</td>
-                <td>{{ alert.score.value }}</td>
-                <td><span class="badge" [class]="'badge ' + alert.score.band.toLowerCase()">{{ alert.score.band }}</span></td>
+                <td>{{ alert.value }}</td>
+                <td><span class="badge" [class]="'badge ' + alert.band.toLowerCase()">{{ alert.band }}</span></td>
                 <td>{{ alert.modelVersion }}</td>
-                <td><mf-score-explanation [reasonCodes]="alert.score.reasonCodes" /></td>
+                <td><mf-score-explanation [reasonCodes]="alert.reasonCodes" /></td>
               </tr>
             }
           </tbody>
@@ -88,6 +88,6 @@ export class MerchantDetail {
 
   protected latestScore(): number {
     const alerts = this.data().alerts;
-    return alerts.length === 0 ? 0 : alerts[0].score.value;
+    return alerts.length === 0 ? 0 : alerts[0].value;
   }
 }

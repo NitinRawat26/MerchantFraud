@@ -22,10 +22,10 @@ import { ScoreExplanation } from './score-explanation';
               <tr>
                 <td>{{ alert.scoredAt | date:'medium' }}</td>
                 <td><a [routerLink]="['/merchants', alert.subjectId]">{{ alert.subjectId }}</a></td>
-                <td>{{ alert.score.value }}</td>
-                <td><span class="badge" [class]="'badge ' + alert.score.band.toLowerCase()">{{ alert.score.band }}</span></td>
+                <td>{{ alert.value }}</td>
+                <td><span class="badge" [class]="'badge ' + alert.band.toLowerCase()">{{ alert.band }}</span></td>
                 <td>{{ alert.modelVersion }}</td>
-                <td><mf-score-explanation [reasonCodes]="alert.score.reasonCodes" /></td>
+                <td><mf-score-explanation [reasonCodes]="alert.reasonCodes" /></td>
               </tr>
             }
           </tbody>

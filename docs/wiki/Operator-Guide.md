@@ -45,6 +45,16 @@ npm start
 
 Open `http://localhost:4200`. The dev server proxies `/api` calls to `http://localhost:5292`.
 
+## Run a standalone preset
+
+Presets need no feed, external service or key. With the API running:
+
+```bash
+curl -X POST http://localhost:5292/api/presets/full-platform/run
+```
+
+Or open **Preset Lab** in the workbench and click a preset. See [Presets](Presets.md).
+
 ## Model operations
 
 Use `MerchantFraud.Ml` primitives for offline retraining:

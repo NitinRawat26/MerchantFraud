@@ -24,10 +24,11 @@ Early scaffold. The solution currently contains:
 - `src/MerchantFraud.Ml` — supervised dataset builder, feature mapper, train/test split, metrics, and logistic-regression baseline.
 - `src/MerchantFraud.Network` — shared-identifier merchant link detection and network risk scoring.
 - `src/MerchantFraud.Integrations` — external assessment and schema adapters for MerchantIntelligence and MapWright.
+- `web/workbench` — Angular dashboard, alerts queue, merchant detail, and score explanation UI.
 - `tests/MerchantFraud.Tests` — xUnit tests.
 - `docs/wiki` — architecture, domain model, ingestion, features, rules, scoring, persistence, API, synthetic data, ML, network, integrations, roadmap, and planning docs.
 
-Planned projects include richer ML trainers, case management, and an Angular workbench.
+Planned projects include richer ML trainers and case management.
 
 ## Build and test
 

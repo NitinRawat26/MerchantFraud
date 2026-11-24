@@ -17,7 +17,7 @@ The build is intentionally patch-sized. Each patch should compile and pass tests
 11. **Network analysis v1** — shared identifiers and merchant link/ring scoring (implemented in patch 11).
 12. **MerchantIntelligence integration** — consume assessment/KYB output as fraud features (implemented in patch 12).
 13. **MapWright integration** — map partner-specific transaction/application schemas into canonical records (implemented in patch 13).
-14. **Angular workbench v1** — dashboard, alerts queue, merchant detail, score explanation.
+14. **Angular workbench v1** — dashboard, alerts queue, merchant detail, score explanation (implemented in patch 14).
 15. **Model ops v1** — champion/challenger, drift checks, retrain/promote workflow.
 16. **Docs and samples** — full wiki, README examples, demo data, and operator guides.
 

@@ -17,6 +17,7 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - [Network analysis](Network.md) — shared identifiers and merchant ring scoring.
 - [Integrations](Integrations.md) — external assessment and mapping adapters.
 - [Workbench](Workbench.md) — Angular fraud-operations UI.
+- [Model ops](ModelOps.md) — retraining, champion/challenger, and drift checks.
 - [Roadmap](Roadmap.md) — patch-by-patch build plan.
 
 ## Current implementation
@@ -29,7 +30,7 @@ MerchantFraud is a hybrid fraud-risk platform for merchant acquiring. It is desi
 - `MerchantFraud.Persistence` stores canonical records and audit events in SQLite.
 - `MerchantFraud.Api` exposes the fraud pipeline over HTTP.
 - `MerchantFraud.Synthetic` generates deterministic labeled sample data.
-- `MerchantFraud.Ml` builds training examples and evaluates a logistic-regression baseline.
+- `MerchantFraud.Ml` builds training examples, evaluates a logistic-regression baseline, and supports retraining, champion/challenger promotion, and drift checks.
 - `MerchantFraud.Network` links merchants by shared devices, IPs, customers, and card fingerprints.
 - `MerchantFraud.Integrations` maps MerchantIntelligence assessments into fraud score signals and MapWright partner schemas into canonical transaction feeds.
 - `web/workbench` provides the Angular dashboard, alerts queue, merchant detail, and score explanation UI.
